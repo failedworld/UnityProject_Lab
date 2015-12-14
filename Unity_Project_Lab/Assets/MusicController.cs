@@ -19,6 +19,7 @@ public class MusicController : MonoBehaviour {
         if (Input.GetKey(KeyCode.M))
             if (!mMusicSource.isPlaying)
                 mMusicSource.Play();
+      
         if (Input.GetKey(KeyCode.N))
             if (mMusicSource.isPlaying)
                 mMusicSource.Stop();

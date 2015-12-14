@@ -8,7 +8,9 @@ public class IndoorProjectorController : MonoBehaviour {
     public GameObject projector;
 
     private Material mMaterial;
-    private  MovieTexture mMovieTex;
+    private MovieTexture mMovieTex;
+    public GameObject audioOfMovie;
+    private AudioSource mAudioSource;
     private Vector3 upDownDirection = new Vector3(0.0f,4.034f / 20.0f, 0.0f);
 
 	void Start () {
@@ -16,7 +18,8 @@ public class IndoorProjectorController : MonoBehaviour {
         //Debug.Log(mesh.name + " has " + mesh.subMeshCount + " submeshes!");
         mMovieTex = (MovieTexture)projector.GetComponent<MeshRenderer>().material.mainTexture;
         mMovieTex.loop = false;
-        
+        mAudioSource = audioOfMovie.GetComponent<AudioSource>();
+        mAudioSource.loop = false;
         //mMovieTex.Play();
     }
 
@@ -98,18 +101,28 @@ public class IndoorProjectorController : MonoBehaviour {
     {
         //if (!mMovieTex.isPlaying)
         mMovieTex.Play();
+        if (mAudioSource.isPlaying)
+        {
+            mAudioSource.UnPause();
+        }else
+            mAudioSource.Play();
         //if (mMovieTex.loop = )
     }
 
     public void pauseMovie()
     {
         if (mMovieTex.isPlaying)
+        {
             mMovieTex.Pause();
+            mAudioSource.Pause();
+        }
+           
     }
 
     public void stopMovie()
     {
         mMovieTex.Stop();
+        mAudioSource.Stop();
     }
 
 
