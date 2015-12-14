@@ -12,6 +12,8 @@ public class DownBtnListener : HovercastItemListener<ISelectorItem>
     public GameObject controller;
 
     private IndoorProjectorController mProjectCtrl;
+
+    private bool ifTurned = false;
     // Use this for initialization
     void Start()
     {
@@ -44,6 +46,17 @@ public class DownBtnListener : HovercastItemListener<ISelectorItem>
 
         //ISelectorItem upBtn = (ISelectorItem)upSelector.GetItem();
         //InvokeRepeating("doProjectorDown", 0.5f, 0.1F);
-        mProjectCtrl.makeTheProjectorDown();
+        if (!ifTurned)
+        {
+            mProjectCtrl.makeTheProjectorDown();
+            Item.Label = "Projector UP";
+            ifTurned = true;
+        }
+        else {
+            mProjectCtrl.makeTheProjectorUp();
+            Item.Label = "Projector DOWN";
+            ifTurned = false;
+        }
+            
     }
 }

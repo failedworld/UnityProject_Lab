@@ -55,7 +55,7 @@ public class MusicControllerListener : HovercastItemListener<ISelectorItem>
             if (mMusicCtrl.mMusicSource.isPlaying)
                 mMusicCtrl.mMusicSource.Stop();
             Item.Label = "Music ON";
-            isTurn = false;
+            isTurn = true;
         }
 
     }
